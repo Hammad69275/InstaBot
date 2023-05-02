@@ -3,7 +3,6 @@ module.exports = {
     run:async ({ig,openai,message,ContextHandler,loggedInUser}) => {
             
             await ig.realtime.direct.indicateActivity({threadId:message.message.thread_id,isActive:true})    
-            console.log(message)
             let messages = ContextHandler.addMessage({role:"user",content:message.message.text.replace(`@${loggedInUser.username}`,``)},message.message.user_id)
             
             let resp = await openai.createChatCompletion({

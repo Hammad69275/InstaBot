@@ -10,7 +10,6 @@ module.exports = class DMContextContainer{
         }
         userContext.push(context)
         this.context[user] = userContext
-        console.log(this.context)
         return userContext
     }
 }
