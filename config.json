@@ -1,0 +1,5 @@
+{
+    "MaxMessagesInCache":50,
+    "MaxMessagesInContext":4,
+    "AIPrompt":"You are a helpful instagram bot"
+}

@@ -1,0 +1,19 @@
+{
+  "name": "instabot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.4.0",
+    "instagram-private-api": "github:Hammad69275/instagram-private-api",
+    "instagram-mqtt":"github:Hammad69275/instagram_mqtt",
+    "openai": "^3.2.1",
+    "tough-cookie": "^4.1.2"
+  }
+}
