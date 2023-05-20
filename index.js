@@ -67,23 +67,6 @@ function saveState(data) {
     let meID = loggedInUser.pk
     let threads = await ig.feed.directInbox().request()
 
-    ig.realtime.on("receive",async(t,message) => {
-        let msg = message[0]
-        if(msg.topic.id == "146" && msg.topic.path == "/ig_message_sync"){
-            let p_threads = (await ig.feed.directPending().request()).inbox.threads
-            for(let i = 0;i<p_threads.length;i++){
-                let id = p_threads[i].thread_id
-                console.log(id)
-                try{
-                    await ig.directThread.approve(id)
-                    await ig.entity.directThread(id).broadcastText("Hello! I have accepted your message request. You can start sending reels,stories and posts and I will download and send them to you!")
-                }catch(err){
-                    console.log(err)
-                }
-            }
-        }
-    })
-
     ig.realtime.on("message",async (message)=> {     
         if(message?.message?.user_id == meID) return
         const op = message?.message?.op
