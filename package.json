@@ -10,10 +10,19 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "async": "^3.2.4",
     "axios": "^1.4.0",
+    "canvas": "^2.11.2",
+    "cheerio": "^1.0.0-rc.12",
+    "fluent-ffmpeg": "^2.1.2",
+    "instagram-mqtt": "github:Hammad69275/instagram_mqtt",
     "instagram-private-api": "github:Hammad69275/instagram-private-api",
-    "instagram-mqtt":"github:Hammad69275/instagram_mqtt",
-    "openai": "^3.2.1",
-    "tough-cookie": "^4.1.2"
+    "jimp": "^0.22.8",
+    "JSONStream": "^1.3.5",
+    "mssql": "^9.1.1",
+    "openai": "^3.3.0",
+    "pet-pet-gif": "^1.0.9",
+    "readline": "^1.3.0",
+    "youtube-search-api": "^1.1.1"
   }
 }

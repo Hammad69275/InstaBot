@@ -3,15 +3,15 @@ const axios = require("axios").default
 module.exports = {
     name:"snipe",
     run:async (data) => {
-        let {meID,ig,message,mention,messages_container,loggedInUser} = data
+        let {selfID,ig,message,mention,messages_container} = data
         let userId = message.message.user_id
         if(mention){
             userId = await ig.user.getIdByUsername(mention)
         }
-        else mention = (await ig.user.info(userId)).username
-        if(meID == userId) return
+        else mention = (await ig.user.searchExact(mention)).username
+        if(selfID == userId) return
         
-        let msg = messages_container.getUnsentMessage({threadId:message.message.thread_id,userId})
+        let msg = await messages_container.getUnsentMessage({threadId:message.message.thread_id,userId})
         if(!msg) return ig.realtime.direct.sendText({text:"There is no message record for this user!",threadId:message.message.thread_id,reply:{item_id:message.message.item_id,client_context:message.message.client_context}})
         if(msg.item_type == "media" && msg.imageURL !== null){
             await ig.realtime.direct.indicateActivity({threadId:message.message.thread_id,isActive:true})
@@ -40,6 +40,8 @@ module.exports = {
             return await ig.realtime.direct.sendText({text:`Unsent By:- @${mention}`,threadId:message.message.thread_id})
         }else if(["link","text"].includes(msg.item_type)){
             return await ig.realtime.direct.sendText({text:`Unsent By:- @${mention} \n\n"${truncateString(msg.text)}"`,threadId:message.message.thread_id})
+        }else if(["media_share","clip"].includes(msg.item_type)){
+            return await ig.realtime.direct.sendText({text:`Unsent By:- @${mention} \n\n"${msg.postURL}"`,threadId:message.message.thread_id})
         }
     }
 }

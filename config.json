@@ -1,5 +1,15 @@
 {
-    "MaxMessagesInCache":50,
+
+    "Username":"",
+    "Password":"",
+    "MSSQL_Connection_String":"",
+    "OpenAI_API_Key":"",
+    "PlaygroundAICookies":{},
+    "Shazam_API_Key":"",
+    "defaultImitation": "",
+    "StoreMessages":false,
+    "DeviceSeed":"",
     "MaxMessagesInContext":4,
-    "AIPrompt":"You are a helpful instagram bot"
+    "MaxMessagesInCache":50
+    
 }

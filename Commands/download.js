@@ -3,6 +3,7 @@ module.exports = {
     name:"download",
     replyOnly:true,
     run:async (data) => {
+        
         if(data.message.message.replied_to_message.item_type !== "raven_media") return
         let {media} = data.message.message.replied_to_message.visual_media
        
