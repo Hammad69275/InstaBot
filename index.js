@@ -199,7 +199,6 @@ try{ userStore = JSON.parse(fs.readFileSync(__dirname+"/user_data.json","utf-8")
          else {
             try {
                 if(message.message.user_id == selfID || message.message.op !== `add` || message.message.item_type == "text") return
-                if((await sql.query(`SELECT * FROM BlacklistedUsers WHERE id='${message.message.user_id}' AND thread='${message.message.thread_id}' `)).rowsAffected[0] > 0) return
                 await DMHandler.run({ig,message,loggedInUser})
             }catch(err){
                 let msg = `Error Occured: ${err}. Please contact the owner or try again`
