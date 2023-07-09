@@ -149,7 +149,7 @@ try{ userStore = JSON.parse(fs.readFileSync(__dirname+"/user_data.json","utf-8")
             // checking whether the message is a command or a simple message and executing the appropriate code
             if(message.message?.text.startsWith("!")){
 
-                if((await sql.query(`SELECT * FROM BlacklistedUsers WHERE id='${message.message.user_id}',thread='${message.message.thread_id}' `)).rowsAffected[0] > 0) return
+                if((await sql.query(`SELECT * FROM BlacklistedUsers WHERE id='${message.message.user_id}' AND thread='${message.message.thread_id}' `)).rowsAffected[0] > 0) return
                 
                 let {text} = message.message
                 let command = text.substring(1).split(" ")[0]
@@ -184,7 +184,7 @@ try{ userStore = JSON.parse(fs.readFileSync(__dirname+"/user_data.json","utf-8")
                 try{
                     if(message.message.text.startsWith(`@${loggedInUser.username}`) || (message.message.replied_to_message?.user_id == selfID && message.message.user_id !== selfID && !message.message.replied_to_message?.media) ){
                         
-                        if((await sql.query(`SELECT * FROM BlacklistedUsers WHERE id='${message.message.user_id}',thread='${message.message.thread_id}' `)).rowsAffected[0] > 0) return
+                        if((await sql.query(`SELECT * FROM BlacklistedUsers WHERE id='${message.message.user_id}' AND thread='${message.message.thread_id}' `)).rowsAffected[0] > 0) return
                        
                         await GroupAIHandler.run({sql,ig,openai,message,ContextHandler,loggedInUser,userStore,config})
                     }
@@ -199,7 +199,7 @@ try{ userStore = JSON.parse(fs.readFileSync(__dirname+"/user_data.json","utf-8")
          else {
             try {
                 if(message.message.user_id == selfID || message.message.op !== `add` || message.message.item_type == "text") return
-                if((await sql.query(`SELECT * FROM BlacklistedUsers WHERE id='${message.message.user_id}',thread='${message.message.thread_id}' `)).rowsAffected[0] > 0) return
+                if((await sql.query(`SELECT * FROM BlacklistedUsers WHERE id='${message.message.user_id}' AND thread='${message.message.thread_id}' `)).rowsAffected[0] > 0) return
                 await DMHandler.run({ig,message,loggedInUser})
             }catch(err){
                 let msg = `Error Occured: ${err}. Please contact the owner or try again`

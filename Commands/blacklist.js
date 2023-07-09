@@ -14,7 +14,7 @@ module.exports = {
         
         let exists = await sql.query(`
             SELECT * FROM BlacklistedUsers
-            WHERE id='${userId}',thread='${message.message.thread_id}'
+            WHERE id='${userId}' AND thread='${message.message.thread_id}'
         `)
         
         if(exists.rowsAffected[0] > 0) return await ig.realtime.direct.sendText({text:`This user is already blacklisted`,threadId:message.message.thread_id,reply:{item_id:message.message.item_id,client_context:message.message.client_context}})

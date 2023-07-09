@@ -14,7 +14,7 @@ module.exports = {
         
         await sql.query(`
             DELETE FROM BlacklistedUsers
-            WHERE id='${userId}',thread='${message.message.thread_id}'
+            WHERE id='${userId}' AND thread='${message.message.thread_id}'
         `)
         
         return await ig.realtime.direct.sendText({text:`Whitelisted @${mention}`,threadId:message.message.thread_id})
