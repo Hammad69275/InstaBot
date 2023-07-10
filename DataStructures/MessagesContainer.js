@@ -91,8 +91,25 @@ module.exports = class MessagesContainer{
             return msg
             
         }
-        return this.operator(threadId,(obj,{foundMessage}) => {
-          if (obj.user_id ===  userId && obj.unsent == true) foundMessage[0] = obj
+        return new Promise((resolve,reject) => {
+          // Path to the JSON file
+          const filePath = `./chat_data/${threadId}.json`;
+        
+          // Create a readable stream to read the JSON file
+          const readStream = fs.createReadStream(filePath, { encoding: 'utf8'});
+      
+          // Create a JSONStream parser to parse the JSON file stream
+          const parser = JSONStream.parse('*');
+      
+          let foundmessage;
+          // Handle each parsed object from the JSON file
+          parser.on('data', (obj) => { if (obj.user_id ===  userId && obj.unsent == true) foundmessage = obj });
+      
+          // Handle the end of the JSON file stream
+          parser.on('end', () => resolve(foundmessage));
+      
+          // Pipe the JSON file stream through the parser
+          readStream.pipe(parser);
         })
     } 
     removeReactions(threadID, item_id, reaction) {
