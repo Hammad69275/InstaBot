@@ -111,6 +111,6 @@ Imitations (thread VarChar(MAX),imitation VarChar(MAX))
 `MaxMessagesInCache`: Max messages stored in cache. Used for the sniping feature.
 
 <h2>Final Words</h2>
-Thats all for now. I had alot of fun working on this one and I will make sure to keep it updated. Let me know about your thoughts and suggestions.
+Thats all for now. I had alot of fun working on this one and I will make sure to keep it updated. Let me know about your thoughts and suggestions. You can email me if you want a demo before using it.
 
 
