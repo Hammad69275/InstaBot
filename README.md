@@ -3,7 +3,7 @@
 InstaBot is a powerful Instagram bot that offers several advanced features to make your Instagram experience better. With InstaBot, you can download reels, posts, stories, and raven media, see unsent messages with a single command, and chat with an AI-powered ChatBot.
 <h2>Features</h2>
 <ul>
-  <li><b>AI ChatBot:</b> InstaBot uses GPT-3 Turbo to provide users with an advanced chatbot experience. ChatBot functionality is limited to threads only.</li>
+  <li><b>AI ChatBot:</b> InstaBot uses GPT-3 Turbo to provide users with an advanced chatbot experience. ChatBot functionality is limited to group chats only.</li>
   <li><b>Media Downloader:</b> InstaBot can download reels, posts, and stories with a simple command. Share the reels, and InstaBot will download and send them back to you!</li>
   <li><b>Message Sniper:</b> InstaBot keeps track of unsent messages and can send them back with a single command. Currently, it only tracks text messages, photos, and videos, and media files will expire after a day.</li>
   <li><b>Raven Media Downloader:</b> InstaBot can download raven media with a single command. Just reply to the photo or video with "!download," and InstaBot will download it for you!</li>
